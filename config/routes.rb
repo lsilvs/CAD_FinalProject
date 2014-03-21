@@ -2,7 +2,9 @@ Kamarad::Application.routes.draw do
 
   devise_for :users
 
-  root to: "home#index"
+  resources :phones
+
+  root :to => "phones#index"
 
   
   # The priority is based upon order of creation:
