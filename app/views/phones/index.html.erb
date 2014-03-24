@@ -1,22 +1,34 @@
-<h1>Listing phones</h1>
-
-<% if @phone %>
-
-  <table>
+<%- model_class = Phone -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
     <tr>
-      <th>Number</th>
-      <th>Credit</th>
+      <th><%= model_class.human_attribute_name(:number) %></th>
+      <th><%= model_class.human_attribute_name(:credit) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
-    <tr>
-      <td><%= @phone.number %></td>
-      <td><%= @phone.credit %></td>
-    </tr>
-  </table>
+  </thead>
+  <tbody>
+    <% if @phone %>
+      <tr>
+        <td><%= @phone.number %></td>
+        <td><%= @phone.credit %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_phone_path(@phone), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      phone_path(@phone),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<% else %>
-
-  <%= link_to 'Add your Phone', new_phone_path %>
-
-<% end %>
-
-<br />
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_phone_path,
+            :class => 'btn btn-primary' %>
