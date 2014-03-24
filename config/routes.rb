@@ -2,9 +2,9 @@ Kamarad::Application.routes.draw do
 
   devise_for :users
 
-  resources :phones
+  # resources :phones
   
-  root :to => "phones#index"
+  # root :to => "users#index"
 
   
   # The priority is based upon order of creation:
