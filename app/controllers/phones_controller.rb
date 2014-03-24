@@ -1,8 +1,12 @@
 class PhonesController < ApplicationController
+  
+  before_filter :authenticate_user!
+
   # GET /phones
   # GET /phones.json
   def index
-    @phones = Phone.all
+    # @phones = Phone.all
+    @phone = Phone.find_by_user_id(current_user.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +45,7 @@ class PhonesController < ApplicationController
   # POST /phones.json
   def create
     @phone = Phone.new(params[:phone])
+    @phone.user_id = current_user.id
 
     respond_to do |format|
       if @phone.save

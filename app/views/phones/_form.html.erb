@@ -15,14 +15,9 @@
     <%= f.label :number %><br />
     <%= f.text_field :number %>
   </div>
-  <div class="field">
-    <%= f.label :credit %><br />
-    <%= f.text_field :credit %>
-  </div>
-  <div class="field">
-    <%= f.label :data %><br />
-    <%= f.number_field :data %>
-  </div>
+  
+  <input id="user" name="user" type="hidden" value="<%= current_user.id %>">
+
   <div class="actions">
     <%= f.submit %>
   </div>

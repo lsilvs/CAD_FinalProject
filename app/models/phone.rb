@@ -1,3 +1,4 @@
 class Phone < ActiveRecord::Base
-  attr_accessible :credit, :data, :number
+  belongs_to :user
+  attr_accessible :credit, :number
 end

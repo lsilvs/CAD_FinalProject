@@ -3,9 +3,9 @@
 one:
   number: MyString
   credit: 1.5
-  data: 1
+  user: 
 
 two:
   number: MyString
   credit: 1.5
-  data: 1
+  user: 

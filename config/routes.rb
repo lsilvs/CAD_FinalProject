@@ -3,7 +3,7 @@ Kamarad::Application.routes.draw do
   devise_for :users
 
   resources :phones
-
+  
   root :to => "phones#index"
 
   

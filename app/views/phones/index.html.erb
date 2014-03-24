@@ -1,27 +1,22 @@
 <h1>Listing phones</h1>
 
-<table>
-  <tr>
-    <th>Number</th>
-    <th>Credit</th>
-    <th>Data</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% if @phone %>
 
-<% @phones.each do |phone| %>
-  <tr>
-    <td><%= phone.number %></td>
-    <td><%= phone.credit %></td>
-    <td><%= phone.data %></td>
-    <td><%= link_to 'Show', phone %></td>
-    <td><%= link_to 'Edit', edit_phone_path(phone) %></td>
-    <td><%= link_to 'Destroy', phone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <table>
+    <tr>
+      <th>Number</th>
+      <th>Credit</th>
+    </tr>
+    <tr>
+      <td><%= @phone.number %></td>
+      <td><%= @phone.credit %></td>
+    </tr>
+  </table>
+
+<% else %>
+
+  <%= link_to 'Add your Phone', new_phone_path %>
+
 <% end %>
-</table>
 
 <br />
-
-<%= link_to 'New Phone', new_phone_path %>
