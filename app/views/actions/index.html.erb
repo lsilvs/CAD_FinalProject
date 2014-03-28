@@ -1,0 +1,10 @@
+<h1>Action index page</h1>
+
+<p><%= current_user.phone_number %></p>
+<p><%= current_user.credit %></p>
+
+<%= link_to "Topup", "/actions/topup", :data => { :colorbox => true, :colorbox_height => '300px', 
+																									:colorbox_width => '500px', :colorbox_iframe => false } %>
+
+<%= link_to "Transfer", "/actions/transfer", :data => { :colorbox => true, :colorbox_height => '300px', 
+																									:colorbox_width => '500px', :colorbox_iframe => false } %>

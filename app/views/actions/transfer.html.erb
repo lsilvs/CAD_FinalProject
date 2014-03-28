@@ -1,0 +1,8 @@
+<h2>Transfer</h2>
+
+<%= form_for :user do |f| %>
+  <%= f.label 'Amount' %><%= f.text_field :amount %>
+  <%= f.label 'To' %><%= f.text_field :to_phone_number %>
+	</br>
+  <%= f.submit 'Ok' %>
+<% end %>

@@ -2,9 +2,11 @@ Kamarad::Application.routes.draw do
 
   devise_for :users
 
-  # resources :phones
+  match '/actions/topup', to: 'actions#topup'
+  match '/actions/transfer', to: 'actions#transfer'
+  # resources :actions
   
-  # root :to => "users#index"
+  root :to => "actions#index"
 
   
   # The priority is based upon order of creation:
