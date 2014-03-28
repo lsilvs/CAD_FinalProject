@@ -39,6 +39,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    colorbox-rails (0.1.1)
+      jquery-rails
+      rails (>= 3.1.1)
     commonjs (0.2.7)
     devise (3.2.4)
       bcrypt (~> 3.0)
@@ -132,6 +135,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  colorbox-rails
   devise
   jquery-rails
   less-rails
