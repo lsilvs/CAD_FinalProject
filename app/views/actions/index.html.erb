@@ -1,10 +1,62 @@
-<h1>Action index page</h1>
 
-<p><%= current_user.phone_number %></p>
-<p><%= current_user.credit %></p>
+  <div class="panel-body">
+    <p>Your number <%= current_user.phone_number %> has €<%= current_user.credit %> of credit.</p>
+  </div>
 
-<%= link_to "Topup", "/actions/topup", :data => { :colorbox => true, :colorbox_height => '300px', 
-																									:colorbox_width => '500px', :colorbox_iframe => false } %>
+  <div class="panel-body">
+	  <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+		  <li class="active"><a href="#topup" data-toggle="tab">Topup</a></li>
+		  <li class=""><a href="#transfer" data-toggle="tab">Transfer</a></li>
+		</ul>
 
-<%= link_to "Transfer", "/actions/transfer", :data => { :colorbox => true, :colorbox_height => '300px', 
-																									:colorbox_width => '500px', :colorbox_iframe => false } %>
+
+	  <div id="myTabContent" class="tab-content">
+		  <div class="tab-pane fade active in" id="topup">
+		  	<%= form_for :user, url: {action: "topup"} do |f| %>
+			    <h3>.: Topup :.</h3>
+			    <br style="clear: both;">
+					<div class="form-group">
+			      <%= f.label 'Amount:', class: "col-lg-1 control-label", for: "inputAmount" %>
+			      <div class="col-lg-2">
+			      	<%= f.text_field :credit, class: "form-control", placeholder: "Amount" %>
+			      </div>
+			    </div>
+			    <br style="clear: both;">
+					<div class="form-group">
+			      <div class="col-lg-2 col-lg-offset-1">
+			        <button class="btn btn-default">Cancel</button>
+			        <%= f.submit 'Submit', class: "btn btn-primary" %>
+			      </div>
+			    </div>
+			  <% end %>
+		  </div>
+
+
+		  <div class="tab-pane fade" id="transfer">
+		  	<%= form_for :user, url: {action: "transfer"} do |f| %>
+			    <h3>.: Transfer :.</h3>
+			    <br style="clear: both;">
+					<div class="form-group">
+			      <%= f.label 'Amount', class: "col-lg-1 control-label", for: "inputAmount" %>
+			      <div class="col-lg-2">
+			        <%= f.text_field :amount, class: "form-control", placeholder: "Amount" %>
+			      </div>
+			    </div>
+			    <br style="clear: both;">
+			    <div class="form-group">
+			      <%= f.label 'To:', class: "col-lg-1 control-label", for: "inputTo" %>
+			      <div class="col-lg-2">
+			        <%= f.text_field :transfer_to, class: "form-control", placeholder: "Transfer To" %>
+			      </div>
+			    </div>
+			    <br style="clear: both;">
+					<div class="form-group">
+			      <div class="col-lg-2 col-lg-offset-1">
+			        <button class="btn btn-default">Cancel</button>
+			        <%= f.submit 'Submit', class: "btn btn-primary" %>
+			      </div>
+			    </div>
+			  <% end %>
+		  </div>
+		</div>
+	</div>
