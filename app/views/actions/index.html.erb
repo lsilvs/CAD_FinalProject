@@ -1,6 +1,6 @@
 
   <div class="panel-body">
-    <p>Your number <%= current_user.phone_number %> has €<%= current_user.credit %> of credit.</p>
+    <p>Your number <%= current_user.phone_number %> has <%= current_user.currency %> <%= current_user.credit ? current_user.credit.to_f : 0.to_f %> of credit.</p>
   </div>
 
   <div class="panel-body">

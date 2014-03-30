@@ -11,6 +11,13 @@
     </div>
     <br style="clear: both;">
     <div class="form-group">
+      <%= f.label :currency, class: "col-lg-2 control-label", for: "inputCurrency" %>
+      <div class="col-lg-3">
+        <%= f.select :currency, [['Euro (€)', '€'], ['Dolar ($)', '$'], ['Real (R$)', 'R$']], { :include_blank=>false }, { :style => 'height: 20px;' } %>
+      </div>
+    </div>
+    <br style="clear: both;">
+    <div class="form-group">
       <%= f.label :email, class: "col-lg-2 control-label", for: "inputEmail" %>
       <div class="col-lg-3">
         <%= f.email_field :email, class: "form-control", placeholder: "Email" %>

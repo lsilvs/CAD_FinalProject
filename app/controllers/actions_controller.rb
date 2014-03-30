@@ -17,7 +17,11 @@ class ActionsController < ApplicationController
 		if params.has_key?(:commit)
 			if to = User.find_by_phone_number(params[:user][:transfer_to].to_s)
 
-				to.credit = to.credit.to_f + params[:user][:amount].to_f
+				if current_user.currency == to.currency
+					to.credit = to.credit.to_f + params[:user][:amount].to_f
+				else
+					puts "call gem"
+				end
 
 				current_user.credit = current_user.credit.to_f - params[:user][:amount].to_f
 				current_user.save
