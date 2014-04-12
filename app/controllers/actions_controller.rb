@@ -1,8 +1,10 @@
+require 'currency_converter'
+
 class ActionsController < ApplicationController
 	before_filter :authenticate_user!
 
+
 	def index
-		
 	end
 
 	def topup
@@ -20,7 +22,8 @@ class ActionsController < ApplicationController
 				if current_user.currency == to.currency
 					to.credit = to.credit.to_f + params[:user][:amount].to_f
 				else
-					puts "call gem"
+					rate = CurrencyConverter.checkcurrency("EUR", "USD")
+					to.credit = to.credit.to_f + params[:user][:amount].to_f * rate
 				end
 
 				current_user.credit = current_user.credit.to_f - params[:user][:amount].to_f

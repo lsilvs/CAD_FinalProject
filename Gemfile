@@ -8,6 +8,8 @@ gem 'rails', '3.2.13'
 gem 'sqlite3'
 gem 'devise'
 
+gem 'CurrencyConverter', '~> 0.1.2'
+
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
