@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 require 'currency_converter'
 
 class ActionsController < ApplicationController
@@ -22,7 +24,7 @@ class ActionsController < ApplicationController
 				if current_user.currency == to.currency
 					to.credit = to.credit.to_f + params[:user][:amount].to_f
 				else
-					rate = CurrencyConverter.checkcurrency("EUR", "USD")
+					rate = CurrencyConverter.checkcurrency(currency_abbreviation(current_user.currency), currency_abbreviation(to.currency))
 					to.credit = to.credit.to_f + params[:user][:amount].to_f * rate
 				end
 
@@ -35,6 +37,22 @@ class ActionsController < ApplicationController
 			end
 		end
 		render "index"
+	end
+
+	private
+
+	def currency_abbreviation(simbol)
+		case simbol
+		when "€"
+		  abbr = "EUR"
+		when "$"
+		  abbr = "USD"
+		when "R$"
+		  abbr = "BRL"
+		else
+		  abbr = "none"
+		end
+		return abbr
 	end
 
 end
